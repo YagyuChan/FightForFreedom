@@ -28,6 +28,14 @@
 }
 
 li {
+  display: inline;
+}
+
+ul {
+  background-color: #dddddd;
+}
+
+li {
   border-right: 1px solid #bbb;
 }
 
