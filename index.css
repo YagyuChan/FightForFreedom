@@ -6,11 +6,16 @@
 .topnav a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: #ff8030;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  border-right: 1px solid #bbb;
+}
+
+.topnav :last-child {
+  border-right: none;
 }
 
 .topnav a:hover {
@@ -25,22 +30,6 @@
 
 .topnav .icon {
   display: none;
-}
-
-li {
-  display: inline;
-}
-
-ul {
-  background-color: #dddddd;
-}
-
-li {
-  border-right: 1px solid #bbb;
-}
-
-li:last-child {
-  border-right: none;
 }
 
 @media screen and (max-width: 600px) {
