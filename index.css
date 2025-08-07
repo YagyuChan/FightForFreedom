@@ -38,7 +38,6 @@
     float: right;
     display: block;
   }
-}
 
 @media screen and (max-width: 600px) {
   .topnav.responsive {position: relative;}
@@ -64,4 +63,5 @@
   margin-right: auto;
   width: 50%;
 }
+  
 }
