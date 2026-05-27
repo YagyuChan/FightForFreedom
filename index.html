@@ -1,44 +1,117 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
-<title>Home</title>
-<link rel="stylesheet" href="index.css">
-<script src="index.js"></script>
-
+    <title>Fight For Freedom | Home</title>
+    <link rel="stylesheet" href="style2.css">
 </head>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<center><img src="Yagyu Chan.png" alt="Yagyu Chan" class="center"></center> </br>
+<body>
 
 <div class="topnav" id="myTopnav">
-  <a href="index.html" class="active">Home</a>
-  <a href="stable.html">Stable Patch Notes</a>
-  <a href="beta.html">Beta Patch Notes</a>
-  <a href="https://discord.com/invite/Fj4M3Zb">Contact Us</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
+  <audio id="bgMusic" loop>
+    <source src="FFFLCFFFUCRinRemix.ogg" type="audio/ogg">
+  </audio>
+
+  <div class="nav-left">
+    <a href="index.html" class="active">Home</a>
+    <a href="stable.html">Stable Patch Notes</a>
+  </div>
+
+  <div class="logo-container">
+    <a href="index.html"><img src="Fight For Freedom.png" alt="Logo"></a>
+  </div>
+
+  <div class="nav-right">
+    <a href="beta.html">Beta Patch Notes</a>
+    <a href="https://discord.com/invite/Fj4M3Zb">Contact Us</a>
+    <button class="music-toggle" onclick="toggleMusic()">🔊 Music</button>
+    <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" 
+           oninput="changeVolume(this.value)">
+  </div>
 </div>
 
-<center><p style="color:white;"> Welcome to the Fight For Freedom Game Official website!</center> </p>
-<center><img src="Fight For Freedom.png"></center> </br>
+<div class="container">
+    <img src="Fight For Freedom.png" alt="Fight For Freedom" style="width: 100%; max-width: 600px; display: block; margin: 0 auto;">
+    
+    <h2>About the Game</h2>
+    <p>Welcome to the official website for Fight For Freedom! This game takes place across 3 different timelines with 3 different protagonists (Killjoy Nagasaka, Melfina Sayana and Rin Yomikaze) on their adventures to fight the Lavaspawn threat in the past, present and future.</p>
+
+    <h2>Story</h2>
+    <p>Step into the shoes of the Lavaspawn slayers and enter a turn based adventure across Akina Sara in 3 different perspectives with constant updates to the experience and story. Killjoy Nagasaka adventures over modern Akina Sara seeking out her friends and meeting new ones along the way while Melfina adventures past Akina Sara after a tragic event that forces her to flee into the past and Rin Yomikaze adventures in the future in an effort to counter an old threat thought to be destroyed.</p>
+
+    <h2>Key Features</h2>
+    <ul>
+        <li><strong>Turn Based Combat:</strong> Experience a turn based adventure across unique regions.</li>
+        <li><strong>Character Progression:</strong> Connect your progress through our specialized progression systems.</li>
+        <li><strong>Evolving World:</strong> Explore new regions, NPCs, Characters, Classes, Outfits, Quests and more added in every update.</li>
+    </ul>
+	
+	<h2 style="text-align: center";>Are you ready to fight for freedom?</h2>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <p>Interested in our development history? 
+           <a href="maintenance.html" style="color: cyan; text-decoration: underline;">View the Full Patch Notes Archive</a>
+        </p>
+    </div>
+</div>
 
 <footer>
-<center><p style="color:white;"> 2021-2025 Yagyu Chan Games</center></p>
+    <a href="index.html">
+        <img src="Yagyu Chan.png" alt="Yagyu Chan Logo">
+    </a>
+    <p>&copy; 2021-2026 Yagyu Chan & Yagyu Chan Games</p>
 </footer>   
 
-<style>
-body {
-  background-image: url('FFFLC and FFFUC combine background.png');
-  background-repeat: no-repeat;
-  background-attachment: fixed; 
-  background-size: 100% 100%;
+<script>
+var audio = document.getElementById("bgMusic");
+var btn = document.querySelector(".music-toggle");
+var slider = document.querySelector(".volume-slider");
+
+window.onload = function() {
+    var savedVolume = localStorage.getItem("musicVolume");
+    if (savedVolume !== null) {
+        audio.volume = savedVolume;
+        slider.value = savedVolume;
+    }
+
+    var savedTime = localStorage.getItem("musicTime");
+    if (savedTime !== null) {
+        audio.currentTime = savedTime;
+    }
+
+    var isMuted = localStorage.getItem("musicMuted");
+    if (isMuted === "true") {
+        audio.pause();
+        btn.innerHTML = "🔇 Mute";
+    } else {
+        audio.play().catch(e => console.log("User interaction required for autoplay"));
+        btn.innerHTML = "🔊 Music";
+    }
+};
+
+audio.ontimeupdate = function() {
+    localStorage.setItem("musicTime", audio.currentTime);
+};
+
+function toggleMusic() {
+    if (audio.paused) {
+        audio.play();
+        btn.innerHTML = "🔊 Music";
+        localStorage.setItem("musicMuted", "false");
+    } else {
+        audio.pause();
+        btn.innerHTML = "🔇 Mute";
+        localStorage.setItem("musicMuted", "true");
+    }
 }
-</style>
+
+function changeVolume(val) {
+    audio.volume = val;
+    localStorage.setItem("musicVolume", val);
+}
+</script>
+
+</body>
+</html>
 
 
 

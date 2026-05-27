@@ -1,0 +1,118 @@
+/* style2.css - Updated Navigation */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    background-image: url('LauncherBackgroundNew.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* Glassy Navigation Bar */
+.topnav {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* Left links, Logo, Right links */
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-left {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end; /* Pushes links toward the center logo */
+}
+
+.nav-right {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.logo-container {
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-container img {
+    height: 60px; /* Adjusted height for better visibility */
+    width: auto;
+}
+
+.topnav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.topnav a:hover, .topnav a.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Content & Footer */
+.container {
+    background: rgba(0, 0, 0, 0.7);
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+footer img {
+    height: 60px;
+    width: auto;
+}
+
+/* Navigation music button */
+.music-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.music-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Volume Slider Style */
+.volume-slider {
+    width: 80px;
+    cursor: pointer;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.maintenance-logo {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin-bottom: 20px;
+    
+    position: relative;
+    /* Increase this number to push it further right */
+    left: 60px; 
+}

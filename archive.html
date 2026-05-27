@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fight For Freedom | Archive</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+<div class="topnav" id="myTopnav">
+<audio id="bgMusic" loop>
+    <source src="FFFLCFFFUCRinRemix.ogg" type="audio/ogg">
+  </audio>
+
+  <div class="nav-left">
+    <a href="index.html">Home</a>
+    <a href="stable.html">Stable Patch Notes</a>
+  </div>
+  <div class="logo-container">
+    <a href="index.html"><img src="Fight For Freedom.png" alt="Logo"></a>
+  </div>
+  <div class="nav-right">
+    <a href="beta.html">Beta Patch Notes</a>
+    <a href="https://discord.com/invite/Fj4M3Zb">Contact Us</a>
+    <button class="music-toggle" onclick="toggleMusic()">🔊 Music</button>
+	 <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" 
+           oninput="changeVolume(this.value)">
+  </div>
+</div>
+
+<div class="container">
+ <h2 style="color: #ff4444;">Patch Notes: Client Version 2.0.0 (Alpha 2)</h2>
+    
+    <p style="color: DarkOrange;"><strong>FFFLC Updates (Game Version 1.7.0 Alpha 2):</strong></p> 
+    <ul>
+        <li>New Character: Priscilla Yamata</li>
+        <li>Reworking of many aspects to connect more to FFFUC Systems</li>
+        <li>Preparations to support new systems</li>
+    </ul>
+
+    <p style="color: Cyan;"><strong>FFFUC Updates (Game Version 1.1.0 Alpha 2):</strong></p> 
+    <ul>
+        <li>New Characters: Chidaru Shinowari, Miko Cindel and Mika Fates added</li>
+        <li>New Region: Siraiuna and new area in the Kazan Region</li>
+        <li>New Skills, NPCs and Quests</li>
+        <li>New Shops added</li>
+        <li>New Enemies added</li>
+    </ul>
+
+    <p style="color: DeepPink;"><strong>Both Game Updates:</strong></p> 
+    <ul>
+        <li>New Skill categorisation system</li>
+        <li>Various Bug Fixes</li>
+    </ul>
+
+    <p style="color: GreenYellow;"><strong>FFF Launcher Updates (Launcher Version 2.0.0 Alpha):</strong></p> 
+    <ul>
+        <li>Updated the .NET Version needed from 3.1 Core to 9.0</li>
+        <li>Removed the Play FFFUC button and changed the Play FFFLC button to Play Fight For Freedom</li>
+        <li>Various Bug Fixes and Version changed to 2.0.0</li>
+    </ul>
+</div>
+
+<footer>
+    <a href="index.html"><img src="Yagyu Chan.png" alt="Yagyu Chan Logo"></a>
+    <p>&copy; 2021-2026 Yagyu Chan & Yagyu Chan Games</p>
+</footer>
+
+<script>
+var audio = document.getElementById("bgMusic");
+var btn = document.querySelector(".music-toggle");
+var slider = document.querySelector(".volume-slider");
+
+window.onload = function() {
+    var savedVolume = localStorage.getItem("musicVolume");
+    if (savedVolume !== null) {
+        audio.volume = savedVolume;
+        slider.value = savedVolume;
+    }
+
+    var savedTime = localStorage.getItem("musicTime");
+    if (savedTime !== null) {
+        audio.currentTime = savedTime;
+    }
+
+    var isMuted = localStorage.getItem("musicMuted");
+    if (isMuted === "true") {
+        audio.pause();
+        btn.innerHTML = "🔇 Mute";
+    } else {
+        audio.play().catch(e => console.log("User interaction required for autoplay"));
+        btn.innerHTML = "🔊 Music";
+    }
+};
+
+audio.ontimeupdate = function() {
+    localStorage.setItem("musicTime", audio.currentTime);
+};
+
+function toggleMusic() {
+    if (audio.paused) {
+        audio.play();
+        btn.innerHTML = "🔊 Music";
+        localStorage.setItem("musicMuted", "false");
+    } else {
+        audio.pause();
+        btn.innerHTML = "🔇 Mute";
+        localStorage.setItem("musicMuted", "true");
+    }
+}
+
+function changeVolume(val) {
+    audio.volume = val;
+    localStorage.setItem("musicVolume", val);
+}
+</script>
+
+</body>
+</html>
