@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ファイト・フォー・フリーダム | ホーム</title>
+    <link rel="stylesheet" href="../style2.css">
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+  <audio id="bgMusic" loop>
+    <source src="../FFFLCFFFUCRinRemix.ogg" type="audio/ogg">
+  </audio>
+
+  <div class="nav-left">
+    <a href="index.html" class="active">ホーム</a>
+    <a href="stable.html">安定版パッチノート</a>
+  </div>
+
+  <div class="logo-container">
+    <a href="index.html"><img src="../Fight For Freedom.png" alt="Logo"></a>
+  </div>
+
+  <div class="nav-right">
+    <a href="beta.html">ベータ版パッチノート</a>
+    <a href="https://discord.com/invite/Fj4M3Zb">お問い合わせ</a>
+    
+    <!-- Language Selection Dropdown -->
+    <div class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">JP ▼</a>
+        <div class="dropdown-content">
+            <a href="../index.html">English</a>
+            <a href="index.html">日本語</a>
+        </div>
+    </div>
+
+    <button class="music-toggle" onclick="toggleMusic()">🔊 音楽</button>
+    <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" 
+           oninput="changeVolume(this.value)">
+  </div>
+</div>
+
+<div class="container">
+    <img src="../Fight For Freedom.png" alt="Fight For Freedom" style="width: 100%; max-width: 600px; display: block; margin: 0 auto;">
+    
+    <h2>ゲーム概要</h2>
+    <p>『ファイト・フォー・フリーダム』公式ウェブサイトへようこそ！
+本作は、過去・現在・未来の3つの時代を舞台に、3人の主人公（キルジョイ・ナガサカ、メルフィナ・サヤナ、リン・ヨミカゼ）がそれぞれの冒険を通して「ラヴァスポーン（Lavaspawn）」の脅威に立ち向かう物語です。</p>
+
+    <h2>ストーリー</h2>
+    <p>ラヴァスポーンを狩る者となり、3つの視点から描かれるアキナ・サラを巡るターン制冒険譚に足を踏み入れよう。物語は常にアップデートされ、体験とストーリーは広がり続けます。現代のアキナ・サラを舞台に、友人を探し、新たな仲間と出会いながら冒険するキルジョイ・ナガサカ。悲劇的な出来事により過去への逃避を余儀なくされたメルフィナ・サヤナ。そして、かつて滅ぼされたと思われていた古の脅威に立ち向かうため、未来で冒険を繰り広げるリン・ヨミカゼ。</p>
+
+    <h2>主な特徴</h2>
+    <ul>
+        <li><strong>ターン制コマンドバトル:</strong> ユニークな地域を巡る冒険を体験しよう。</li>
+        <li><strong>キャラクターの成長:</strong> キャラクターの成長：独自の成長システムを通じて、キャラクターを育成しよう。</li>
+        <li><strong>進化し続ける世界</strong> 進化し続ける世界：アップデートのたびに、新しい地域、NPC、キャラクター、クラス（職業）、衣装、クエストなどが追加され、冒険はさらに広がります。</li>
+    </ul>
+	
+	<h2 style="text-align: center";>自由のために戦う準備はいいか？</h2>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <p>開発の歴史に興味はありますか？ 
+           <a href="maintenance.html" style="color: cyan; text-decoration: underline;">アップデート履歴一覧を見る</a>
+        </p>
+    </div>
+</div>
+
+<footer>
+    <a href="index.html">
+        <img src="../Yagyu Chan.png" alt="Yagyu Chan Logo">
+    </a>
+    <p>&copy; 2021-2026 Yagyu Chan & Yagyu Chan Games</p>
+</footer>   
+
+<script>
+var audio = document.getElementById("bgMusic");
+var btn = document.querySelector(".music-toggle");
+var slider = document.querySelector(".volume-slider");
+
+window.onload = function() {
+    var savedVolume = localStorage.getItem("musicVolume");
+    if (savedVolume !== null) {
+        audio.volume = savedVolume;
+        slider.value = savedVolume;
+    }
+
+    var savedTime = localStorage.getItem("musicTime");
+    if (savedTime !== null) {
+        audio.currentTime = savedTime;
+    }
+
+    var isMuted = localStorage.getItem("musicMuted");
+    if (isMuted === "true") {
+        audio.pause();
+        btn.innerHTML = "🔇 ミュート";
+    } else {
+        audio.play().catch(e => console.log("User interaction required for autoplay"));
+        btn.innerHTML = "🔊 音楽";
+    }
+};
+
+audio.ontimeupdate = function() {
+    localStorage.setItem("musicTime", audio.currentTime);
+};
+
+function toggleMusic() {
+    if (audio.paused) {
+        audio.play();
+        btn.innerHTML = "🔊 音楽";
+        localStorage.setItem("musicMuted", "false");
+    } else {
+        audio.pause();
+        btn.innerHTML = "🔇 ミュート";
+        localStorage.setItem("musicMuted", "true");
+    }
+}
+
+function changeVolume(val) {
+    audio.volume = val;
+    localStorage.setItem("musicVolume", val);
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

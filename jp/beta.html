@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ファイト・フォー・フリーダム | ベータ版パッチノート</title>
+    <link rel="stylesheet" href="../style2.css">
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+  <audio id="bgMusic" loop>
+    <source src="../FFFLCFFFUCRinRemix.ogg" type="audio/ogg">
+  </audio>
+
+  <div class="nav-left">
+    <a href="index.html">ホーム</a>
+    <a href="stable.html">安定版パッチノート</a>
+  </div>
+
+  <div class="logo-container">
+    <a href="index.html"><img src="../Fight For Freedom.png" alt="Logo"></a>
+  </div>
+
+  <div class="nav-right">
+    <a href="beta.html" class="active">ベータ版パッチノート</a>
+    <a href="https://discord.com/invite/Fj4M3Zb">お問い合わせ</a>
+    
+    <!-- Language Selection Dropdown -->
+    <div class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">JP ▼</a>
+        <div class="dropdown-content">
+            <a href="../beta.html">English</a>
+            <a href="beta.html">日本語</a>
+        </div>
+    </div>
+
+    <button class="music-toggle" onclick="toggleMusic()">🔊 音楽</button>
+    <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" 
+           oninput="changeVolume(this.value)">
+  </div>
+</div>
+
+<div class="container">
+ <h2 style="color: #ff4444;">パッチノート：クライアントバージョン 2.0.0 (アルファ 2)</h2>
+    
+    <p style="color: DarkOrange;"><strong>FFFLC アップデート（ゲームバージョン1.7.0 アルファ 2):</strong></p> 
+    <ul>
+        <li>新キャラクター：プリシラ・ヤマタ</li>
+        <li>FFFUCシステムとの連携強化のため、ゲーム内の多くの側面をリワークしました。</li>
+        <li>新システム導入に向けた準備を行いました。</li>
+    </ul>
+
+    <p style="color: Cyan;"><strong>FFFUC アップデート（ゲームバージョン1.1.0 アルファ 2):</strong></p> 
+    <ul>
+        <li>新キャラクター：チダル・シノワリ、ミコ・シンデル、ミカ・フェイツが追加されました。</li>
+        <li>新地域「シライウナ」が追加されました。カザン地域に新しいエリアが追加されました。</li>
+        <li>新しいスキル、NPC、およびクエストが追加されました。</li>
+        <li>新しいショップが追加されました。</li>
+        <li>新しい敵が追加されました。</li>
+    </ul>
+
+    <p style="color: DeepPink;"><strong>両方のゲームアップデート:</strong></p> 
+    <ul>
+        <li>新しいスキル分類システムを導入しました。</li>
+        <li>各種バグの修正を行いました。</li>
+    </ul>
+
+    <p style="color: GreenYellow;"><strong>FFF ランチャーのアップデート（ランチャーバージョン2.0.0 アルファ):</strong></p> 
+    <ul>
+        <li>必要となる.NETバージョンをCore 3.1から9.0へアップデートしました。</li>
+        <li>「Play FFFUC」ボタンを削除しました。「Play FFFLC」ボタンの名称を「Play Fight For Freedom」に変更しました。</li>
+        <li>各種バグの修正を行いました。 バージョンを 2.0.0 に更新しました。</li>
+    </ul>
+</div>
+
+<footer>
+    <a href="index.html">
+        <img src="../Yagyu Chan.png" alt="Yagyu Chan Logo">
+    </a>
+    <p>&copy; 2021-2026 Yagyu Chan & Yagyu Chan Games</p>
+</footer>   
+
+<script>
+var audio = document.getElementById("bgMusic");
+var btn = document.querySelector(".music-toggle");
+var slider = document.querySelector(".volume-slider");
+
+window.onload = function() {
+    // 1. Restore Volume
+    var savedVolume = localStorage.getItem("musicVolume");
+    if (savedVolume !== null) {
+        audio.volume = savedVolume;
+        slider.value = savedVolume;
+    }
+
+    // 2. Restore Playback Time
+    var savedTime = localStorage.getItem("musicTime");
+    if (savedTime !== null) {
+        audio.currentTime = savedTime;
+    }
+
+    // 3. Restore Mute State
+    var isMuted = localStorage.getItem("musicMuted");
+    if (isMuted === "true") {
+        audio.pause();
+        btn.innerHTML = "🔇 ミュート";
+    } else {
+        audio.play().catch(e => console.log("User interaction required for autoplay"));
+        btn.innerHTML = "🔊 音楽";
+    }
+};
+
+// Save current time every second to local storage
+audio.ontimeupdate = function() {
+    localStorage.setItem("musicTime", audio.currentTime);
+};
+
+function toggleMusic() {
+    if (audio.paused) {
+        audio.play();
+        btn.innerHTML = "🔊 音楽";
+        localStorage.setItem("musicMuted", "false");
+    } else {
+        audio.pause();
+        btn.innerHTML = "🔇 ミュート";
+        localStorage.setItem("musicMuted", "true");
+    }
+}
+
+function changeVolume(val) {
+    audio.volume = val;
+    localStorage.setItem("musicVolume", val);
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
